@@ -13,6 +13,13 @@ def test_open_s6(browser):
     product_page = ProductPage(browser)
     product_page.check_title_is('Samsung galaxy s6')
 
+def test_click_on_first_laptop_after_checking_count(browser):
+    homepage = HomePage(browser)
+    homepage.open()
+    homepage.click_laptops()
+    homepage.check_products_count(6)
+    homepage.click_dell_laptop()
+
 def test_count_of_monitors(browser):
     homepage = HomePage(browser)
     homepage.open()
