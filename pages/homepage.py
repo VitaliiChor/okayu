@@ -13,21 +13,23 @@ class HomePage:
     def open(self):
        self.browser.get('https://demoblaze.com')
 
+    def click_element(self, by, locator):
+        element = self.browser.find_element(by, locator)
+        element.click()
+
     def click_galaxy_s6(self):
-        galaxy_s6 = self.browser.find_element(By.XPATH, '//*[@id="tbodyid"]/div[1]/div/div/h4/a')
-        galaxy_s6.click()
+        self.click_element(By.XPATH, '//*[@id="tbodyid"]/div[1]/div/div/h4/a')
+
 
     def click_monitors(self):
-        monitors = self.browser.find_element(By.CSS_SELECTOR, '''[onclick="byCat('monitor')"]''')
-        monitors.click()
+        self.click_element(By.CSS_SELECTOR, '''[onclick="byCat('monitor')"]''')
+
 
     def click_laptops(self):
-        laptops = self.browser.find_element(By.CSS_SELECTOR, '''[onclick="byCat('notebook')"]''')
-        laptops.click()
+        self.click_element(By.CSS_SELECTOR, '''[onclick="byCat('notebook')"]''')
 
     def click_dell_laptop(self):
-        laptop_dell = self.browser.find_element(By.XPATH, '//*[@id="tbodyid"]/div[5]/div/div/h4/a')
-        laptop_dell.click()
+        self.click_element(By.XPATH, '//*[@id="tbodyid"]/div[5]/div/div/h4/a')
 
     def check_products_count(self, count):
         WebDriverWait(self.browser, 10).until(
