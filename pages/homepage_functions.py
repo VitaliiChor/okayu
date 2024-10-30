@@ -1,29 +1,22 @@
-from telnetlib import EC
-
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 
+from pages.base_page import BasePage
 
-class HomePage:
+
+class HomePage(BasePage):
 
     def __init__(self, browser):
-        self.browser = browser
-
+        super().__init__(browser)
 
     def open(self):
-       self.browser.get('https://demoblaze.com')
-
-    def click_element(self, by, locator):
-        element = self.browser.find_element(by, locator)
-        element.click()
+        super().open('https://demoblaze.com')
 
     def click_galaxy_s6(self):
         self.click_element(By.XPATH, '//*[@id="tbodyid"]/div[1]/div/div/h4/a')
 
-
     def click_monitors(self):
         self.click_element(By.CSS_SELECTOR, '''[onclick="byCat('monitor')"]''')
-
 
     def click_laptops(self):
         self.click_element(By.CSS_SELECTOR, '''[onclick="byCat('notebook')"]''')
