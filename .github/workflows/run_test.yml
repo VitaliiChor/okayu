@@ -10,6 +10,8 @@ on:
         default: all 
         options: 
           - all
+          - contact_us  
+          - home_page   
 
 jobs:
   run-tests:
@@ -25,4 +27,11 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
       - name: Run tests
-        run: pytest tests/
+        run: |
+          if [[ "${{ github.event.inputs.deployment_target }}" == "all" ]]; then
+            pytest tests/  # Запускає всі тести
+          elif [[ "${{ github.event.inputs.deployment_target }}" == "contact_us" ]]; then
+            pytest tests/test_contactus.py  # Запускає тести тільки для Contact Us
+          elif [[ "${{ github.event.inputs.deployment_target }}" == "home_page" ]]; then
+            pytest tests/test_home_page.py  # Запускає тести тільки для домашньої сторінки
+          fi
