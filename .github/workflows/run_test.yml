@@ -29,9 +29,9 @@ jobs:
       - name: Run tests
         run: |
           if [[ "${{ github.event.inputs.deployment_target }}" == "all" ]]; then
-            pytest tests/  # Запускає всі тести
+            pytest tests/ 
           elif [[ "${{ github.event.inputs.deployment_target }}" == "contact_us" ]]; then
             pytest tests/test_contactus.py  # Запускає тести тільки для Contact Us
           elif [[ "${{ github.event.inputs.deployment_target }}" == "home_page" ]]; then
-            pytest tests/test_home_page.py  # Запускає тести тільки для домашньої сторінки
+            pytest tests/test_homepage.py  # Запускає тести тільки для домашньої сторінки
           fi
